@@ -1,0 +1,11 @@
+IMG_HEIGHT: 64
+IMG_WIDTH: 64 
+BATCH_SIZE: 32
+VALIDATION_SPLIT: 0.2
+
+model_training:
+  input_shape: [64, 64, 3]
+  epochs: 100
+  batch_size: 32
+  validation_split: 0.2
+  learning_rate: 0.001
