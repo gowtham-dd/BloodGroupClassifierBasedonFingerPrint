@@ -9,3 +9,12 @@ model_training:
   batch_size: 32
   validation_split: 0.2
   learning_rate: 0.001
+
+model_evaluation:
+  batch_size: 32
+  target_metric: accuracy
+  input_shape: [64, 64, 3]
+  epochs: 100
+  batch_size: 32
+  validation_split: 0.2
+  learning_rate: 0.001

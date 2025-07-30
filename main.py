@@ -2,6 +2,7 @@ from src.BloodGroupClassifier import logger
 from src.BloodGroupClassifier.pipeline.Data_Ingestion_Pipeline import DataIngestionTrainingPipeline
 from src.BloodGroupClassifier.pipeline.Data_Preprocessing_Pipeline import DataPreprocessingTrainingPipeline
 from src.BloodGroupClassifier.pipeline.Model_Training_Pipeline import ModelTrainingPipeline
+from src.BloodGroupClassifier.pipeline.Model_Evaluation_Pipeline import ModelEvaluationPipeline
 
 # dagshub.init(repo_owner='gowtham-dd', repo_name='Introvert-Vs-Extrovert', mlflow=True)
 
@@ -43,6 +44,22 @@ STAGE_NAME="Model Training stage"
 try:
     logger.info(f">>>> Stage {STAGE_NAME} started")
     obj=ModelTrainingPipeline()
+    obj.main()
+    logger.info(f">>>>> Stage {STAGE_NAME} completed")
+
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+
+
+
+STAGE_NAME="Model Evaluation stage"
+
+
+try:
+    logger.info(f">>>> Stage {STAGE_NAME} started")
+    obj=ModelEvaluationPipeline()
     obj.main()
     logger.info(f">>>>> Stage {STAGE_NAME} completed")
 

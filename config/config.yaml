@@ -14,3 +14,12 @@ model_training:
   
   root_dir: artifacts/model_training
   trained_model_path: artifacts/model_training/fingerprint_model 
+
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  test_data_path: artifacts/data_ingestion
+  model_path: artifacts/model_training/fingerprint_model
+  metric_file_name: artifacts/model_evaluation/metrics.json
+  mlflow_uri: https://dagshub.com/gowtham-dd/BloodGroupClassifierBasedonFingerPrint.mlflow
+  target_metric: accuracy

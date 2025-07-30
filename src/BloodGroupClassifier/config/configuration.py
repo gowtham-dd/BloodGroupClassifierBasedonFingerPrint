@@ -1,6 +1,6 @@
 from src.BloodGroupClassifier.constant import *
 from src.BloodGroupClassifier.utils.common import read_yaml,create_directories 
-from src.BloodGroupClassifier.entity.config_entity import DataIngestionConfig,DataPreprocessingConfig,ModelTrainingConfig
+from src.BloodGroupClassifier.entity.config_entity import DataIngestionConfig,DataPreprocessingConfig,ModelTrainingConfig,ModelEvaluationConfig
 
 
 class ConfigurationManager:
@@ -60,4 +60,22 @@ class ConfigurationManager:
         batch_size=params.batch_size,
         validation_split=params.validation_split,
         learning_rate=params.learning_rate
+        )
+    
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        params = self.params.model_evaluation
+
+        create_directories([config.root_dir])
+
+        return ModelEvaluationConfig(
+        root_dir=Path(config.root_dir),
+        test_data_path=Path(config.test_data_path),
+        model_path=Path(config.model_path),
+        metric_file_name=Path(config.metric_file_name),
+        mlflow_uri=config.mlflow_uri,
+        batch_size=params.batch_size,
+        target_metric=params.target_metric,
+        all_params=params
         )

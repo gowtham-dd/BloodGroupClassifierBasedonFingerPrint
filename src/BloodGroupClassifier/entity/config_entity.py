@@ -28,3 +28,15 @@ class ModelTrainingConfig:
     batch_size: int
     validation_split: float
     learning_rate: float
+
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    test_data_path: Path  # This is the folder containing image subdirectories
+    model_path: Path
+    metric_file_name: Path
+    mlflow_uri: str
+    batch_size: int
+    target_metric: str
+    all_params: dict
